@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/chrome-manifest.json",
+  "manifest_version": 3,
+  "version": "1.0",
+  "name": "remember-pdf",
+  "description": "Remembers the last-read page of a PDF in Chrome.",
+  "author": "Alper Silistre",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*/*.pdf"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*/*.pdf"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
